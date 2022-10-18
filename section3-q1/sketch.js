@@ -26,7 +26,7 @@ function draw(){
   size = count;
   color+=0.95;
   if(color>95){color=0;}
-  if(mouseIsPressed){
+  if(keyIsDown("N".charCodeAt(0))){
     count += 2;
     color += 95/49.225;
   }

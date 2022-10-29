@@ -51,6 +51,7 @@ function setup(){
     const dx = width / scores.length;
     const h = height * scores[i] / 100;
     // BLANK[4] ヒント: 条件分岐を使って色を変更します
+    fill(0);
     if(scores[i]==largest){
       fill(255, 0, 0);
       rect(i * dx + 2, height - h, dx - 4, h);
@@ -60,11 +61,11 @@ function setup(){
       rect(i * dx + 2, height - h, dx - 4, h);
     }
     rect(i * dx + 2, height - h, dx - 4, h);
-    fill(0);
+    // fill(0);
     text(scores[i].toPrecision(3), i * dx, height - h);
   }
 
   // BLANK[5] 平均点の線を引きます
   stroke(0, 255, 0);
-  line(0, average, width, average);
+  line(0, height-(height*average/100), width, height-(height*average/100));
 }

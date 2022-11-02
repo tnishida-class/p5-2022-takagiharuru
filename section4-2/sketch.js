@@ -52,6 +52,8 @@ function draw(){
 
     b.x += b.vx;
     b.y += b.vy;
+    b.vx += 0.1;
+    b.vy -= 0.01;
   }
   // let b1={x:30, y:0, size:10, vx:0, vy:20};
   // balls.push(b1);

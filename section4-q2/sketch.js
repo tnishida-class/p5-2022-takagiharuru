@@ -8,11 +8,30 @@ function setup(){
   let scores = [];
   for(let i = 0; i < 10; i++){
     scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入
+    console.log(scores[i]);
   }
 
   // 円グラフを描くには割合が必要なので合計を計算しておく
   let total = 0;
-  for(let i = 0; i < scores.length; i++){ total += scores[i]; }
-
-  // BLANK[1]
+  for(let i = 0; i < scores.length; i++){ 
+    total += scores[i]; 
+  }
+  let ppi=0;
+  for(let i = 1; i < scores.length; i++){
+    ppi+=PI*2*(scores[i-1]/total);
+    arc(width/2, height/2, width*0.8, height*0.8, -PI/2+ppi, PI*2*(scores[i]/total)-PI/2+ppi, PIE);
+    let s=round(scores[i], 1);//.0が出ない
+    let ix=width/2;
+    let iy=height/2;
+    textAlign(CENTER, CENTER);
+    text(s, ix+width*0.3*cos(PI*(scores[i]/total)-PI/2+ppi), iy+height*0.3*sin(PI*(scores[i]/total)-PI/2+ppi));
+    console.log(PI*(scores[i]/total)-PI/2+ppi);
+    console.log(ppi);
+  }
+  arc(width/2, height/2, width*0.8, height*0.8, -PI/2, PI*2*(scores[0]/total)-PI/2, PIE);
+  let s=round(scores[0], 1);
+  let ix=width/2;
+  let iy=height/2;
+  textAlign(CENTER, CENTER);
+  text(s, ix+width*0.3*cos(PI*(scores[0]/total)-PI/2), iy+height*0.3*sin(PI*(scores[0]/total)-PI/2));
 }

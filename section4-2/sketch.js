@@ -14,9 +14,7 @@ function draw(){
   for(let i = 0; i < balls.length; i++){
     let b = balls[i];
     noStroke();
-    fill(255);
-    ellipse(b.x, b.y, b.size);
-    fill(146, 182, 252);
+    fill(146, 182, 252, 90);
     ellipse(b.x, b.y, b.size*0.95);
 
     noFill();
@@ -33,6 +31,7 @@ function draw(){
     arc(b.x, b.y, b.size*0.9, b.size*0.9, HALF_PI, HALF_PI+QUARTER_PI);
     arc(b.x, b.y, b.size*0.9, b.size*0.9, PI+QUARTER_PI, PI+HALF_PI+QUARTER_PI);
     stroke(255);//白
+    ellipse(b.x, b.y, b.size);
     arc(b.x, b.y, b.size*0.87, b.size*0.87, PI, PI*5/3);
     arc(b.x, b.y, b.size*0.87, b.size*0.87, PI/4, PI*2/3);
     strokeWeight(b.size/40);
@@ -54,6 +53,10 @@ function draw(){
     b.y += b.vy;
     b.vx += 0.1;
     b.vy -= 0.01;
+
+    if(b.x>width || b.y<0){
+      splice(i, 1);
+    }
   }
   // let b1={x:30, y:0, size:10, vx:0, vy:20};
   // balls.push(b1);
@@ -94,13 +97,13 @@ function draw(){
     strokeWeight(8);
     line(mouseX, mouseY-35, mouseX, mouseY+25);
     strokeWeight(2);
-    // stroke(78, 221, 252);
-    // arc(mouseX, mouseY-60, 5, 30, PI*7/5, PI*9/5);
-    // stroke(220, 66, 255);
-    // arc(mouseX, mouseY-60, 5, 30, PI/2, PI*3/5);
-    // strokeWeight(1.5);
-    // stroke(250, 235, 105);
-    // arc(mouseX, mouseY-60, 7, 34, PI*3/5, PI*6/5);
+    stroke(78, 221, 252);
+    arc(mouseX, mouseY-60, 5, 30, PI*7/5, PI*9/5);
+    stroke(220, 66, 255);
+    arc(mouseX, mouseY-60, 5, 30, PI/2, PI*3/5);
+    strokeWeight(1.5);
+    stroke(250, 235, 105);
+    arc(mouseX, mouseY-60, 7, 34, PI*3/5, PI*6/5);
     strokeWeight(1);
     stroke(255);
     arc(mouseX, mouseY-60, 5, 30, PI, PI*3/2);

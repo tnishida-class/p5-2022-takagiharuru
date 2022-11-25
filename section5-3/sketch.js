@@ -1,7 +1,7 @@
 // テキスト「関数を作る(2) 結果を戻す関数」～「総仕上げ：カレンダーを描画しよう」
 function setup(){
   createCanvas(520, 500);
-  calendar(2019, 10);
+  calendar(1234, 10);
 
   // isLeapYear の動作確認のため console に出力しています
   for(let i = 2000; i <= 2100; i++){
@@ -18,7 +18,7 @@ function setup(){
 function calendar(y, m){
   let dow = dayOfWeek(y, m, 1);
   let cellWidth = 60, cellHeight = 50;
-  const c = [color(132, 145, 150), color(34, 122, 58), color(140, 116, 65)];
+  const c = [color(132, 145, 150), color(34, 122, 58), color(130, 130, 80)];
   fill(252, 251, 240);
   noStroke();
   rect(0, 0, cellWidth * 7 + 100, cellHeight * (int((dow - 1 + 31) / 7) + 3) + 75);
@@ -40,12 +40,7 @@ function calendar(y, m){
   fill(c[0]);
   textSize(80);
   text(m, 0, 0);
-  pop();
-
-  push();
-  textAlign(LEFT, TOP);
   textSize(20);
-  fill(c[0]);
   text(y, cellWidth * 2, cellHeight * 1);
   pop();
 

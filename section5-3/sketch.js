@@ -18,7 +18,7 @@ function setup(){
 function calendar(y, m){
   let dow = dayOfWeek(y, m, 1);
   let cellWidth = 60, cellHeight = 50;
-  const c = [color(132, 145, 150), color(34, 122, 58), color(130, 130, 80)];
+  const c = [color(132, 145, 150), color(247, 168, 202), color(114, 214, 242)];
   fill(252, 251, 240);
   noStroke();
   rect(0, 0, cellWidth * 7 + 100, cellHeight * (int((dow - 1 + 31) / 7) + 3) + 75);
@@ -36,6 +36,7 @@ function calendar(y, m){
 
   textFont("serif");
   textAlign(LEFT, TOP);
+
   push();
   fill(c[0]);
   textSize(80);
@@ -60,8 +61,10 @@ function calendar(y, m){
   }
   pop();
 
+  push();
+  textAlign(CENTER, TOP);
+  textSize(16);
   for(let d = 1; d <= daysInMonth(y, m); d++){
-    textSize(16);
     if(dayOfWeek(y, m, d) == 0){
       fill(c[1]);
     }
@@ -71,8 +74,9 @@ function calendar(y, m){
     else{
       fill(c[0]);
     }
-    text(d, cellWidth * ((dow - 1 + d) % 7) + 2, cellHeight * (int((dow - 1 + d) / 7) + 2) + 15);
+    text(d, cellWidth * ((dow - 1 + d) % 7) + 10, cellHeight * (int((dow - 1 + d) / 7) + 2) + 15);
   }
+  pop();
   pop();
 }
 

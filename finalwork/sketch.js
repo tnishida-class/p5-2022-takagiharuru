@@ -8,7 +8,7 @@ function setup(){
   createCanvas(400, 400);
   colorMode(HSL, 360, 100, 100, 100);
   colorVari1 = [250, 248, 246, 244, 242, 240, 238, 236, 234, 232, 230, 225, 220, 210, 200, 190, 180, 170, 50];
-  colorVari2 = [color(215, 50, 60, 100), color(215, 60, 50, 100), color(215, 90, 30, 100), color(215, 70, 40, 100)];
+  colorVari2 = [color(215, 65, 65, 100), color(215, 70, 53, 100), color(215, 90, 33, 100), color(215, 72, 43, 100)];
   for(let i = 0; i < 4; i++){
     let brightness = 30 - i * 5;
     colorVari3.push(color(215, 60, brightness, 100));
@@ -27,9 +27,9 @@ function draw(){
 
     mountain(height * 0.25, 0.012, 1, 0, 10, colorVari2[0], 0);
     mountain(height * 0.3, 0.012, 1, 1, 20, colorVari2[1], 10);
-    mountain(height * 0.42, 0.012, 2, 0.3, 40, colorVari2[3], 30);
+    mountain(height * 0.42, 0.012, 2, 0.2, 40, colorVari2[3], 30);
     mountain(height * 0.42, 0.012, 2, -0.2, 40, colorVari2[3], 30);
-    mountain(height * 0.42, 0.02, 2, 0, 70, colorVari2[2], 20);
+    mountain(height * 0.42, 0.02, 1.8, -0.1, 70, colorVari2[2], 20);
 
     flow(0, -0.2, 1.2, 0.55, 1.2, 500, 0.0015, 5);
 
@@ -77,15 +77,15 @@ function draw(){
 
     mountain(height * 0.25, 0.012, 1, 0, 10, colorVari3[3], 0);
     mountain(height * 0.3, 0.012, 1, 1, 20, colorVari3[2], 10);
-    mountain(height * 0.42, 0.012, 2, 0.3, 40, colorVari3[1], 30);
+    mountain(height * 0.42, 0.012, 2, 0.2, 40, colorVari3[1], 30);
     mountain(height * 0.42, 0.012, 2, -0.2, 40, colorVari3[1], 30);
-    mountain(height * 0.42, 0.012, 2, 0, 70, colorVari3[0], 20);
+    mountain(height * 0.42, 0.02, 1.8, -0.1, 70, colorVari3[0], 20);
 
     reversedmountain(height * 0.85, 0.012, 1, 0, 10, colorVari3[3], 0);
     reversedmountain(height * 0.8, 0.012, 1, 1, 20, colorVari3[2], 10);
-    reversedmountain(height * 0.68, 0.012, 2, 0.3, 40, colorVari3[1], 30);
+    reversedmountain(height * 0.68, 0.012, 2, 0.2, 40, colorVari3[1], 30);
     reversedmountain(height * 0.68, 0.012, 2, -0.2, 40, colorVari3[1], 30);
-    reversedmountain(height * 0.68, 0.012, 2, 0, 70, colorVari3[0], 20);
+    reversedmountain(height * 0.68, 0.02, 1.8, -0.1, 70, colorVari3[0], 20);
 
     cartain(height * 0.55, height * 0.45);
   }
@@ -191,7 +191,7 @@ function reflection2(xint, yend, y){
 function luminous(){
   for(let i = height * 0.55 + 0.3; i < height; i += 0.1){
     let ratio = map(i, height * 0.55 + 0.5, height, 0, 1);
-    stroke(210, 60, 70, 11);
+    stroke(210, 65, 72, 11);
     line(width / 2 - (cos(PI * ratio * 1.5 + PI * 0.2) * 40 + noise(i * 0.1 + 10) * 100), i, width / 2 + cos(PI * ratio * 1.5 + PI * 0.2) * 40 + noise(i * 0.1) * 100, i);
   }
 }

@@ -51,8 +51,8 @@ function draw(){
     if(sState == 1){
       let ss = shootingStars[0];
       fill(200, 80, 90, 100);
-      star(ss.x, ss.y, 1.5, 2.5, 5);
-      star(ss.x, height * 1.1 - ss.y, 1.5, 2.5, 5);
+      star(ss.x, ss.y, ss.s, ss.s * 2, 5);
+      star(ss.x, height * 1.1 - ss.y, ss.s, ss.s * 2, 5);
 
       strokeWeight(1);
       stroke(200, 80, 90, bInt);
@@ -61,6 +61,7 @@ function draw(){
       bInt -= 30;
       ss.x += v;
       ss.y += v;
+      ss.s -= 0.24
       l -= v;
 
       pileVx += v;
@@ -108,7 +109,7 @@ function keyPressed(){
 
   if(key == "n"){
     if(state == 1){
-      shootingStars.push({x: random(30, 350), y: random(- 10, 100)});
+      shootingStars.push({x: random(30, 350), y: random(- 10, 100), s: 1.7});
       sState = 1;
     }
   }

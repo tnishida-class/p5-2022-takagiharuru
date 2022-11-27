@@ -60,11 +60,7 @@ function draw(){
         text(s, mouseX-10, mouseY-5);
       }
     }
-    // console.log(r1);
-    // console.log(r2);
-    // console.log(tan(r1));
-    // console.log(tan(r2));
-  }//最後のパイの上で数値が表示されない時がある
+  }
   if(((mouseX-width/2)*(mouseX-width/2)+(mouseY-height/2)*(mouseY-height/2))<(width*0.4)*(width*0.4) && mouseY>((mouseX-width/2)*tan(-PI/2)+height/2) && mouseY<((mouseX-width/2)*tan(PI*2*(scores[0]/total)-PI/2)+height/2)){
     text(round(scores[0], 1), mouseX-10, mouseY-5);
   }

@@ -29,7 +29,7 @@ function draw(){
     mountain(height * 0.3, 0.012, 1, 1, 20, colorVari2[1], 10);
     mountain(height * 0.42, 0.012, 2, 0.3, 40, colorVari2[3], 30);
     mountain(height * 0.42, 0.012, 2, -0.2, 40, colorVari2[3], 30);
-    mountain(height * 0.42, 0.012, 2, 0, 70, colorVari2[2], 20);
+    mountain(height * 0.42, 0.02, 2, 0, 70, colorVari2[2], 20);
 
     flow(0, -0.2, 1.2, 0.55, 1.2, 500, 0.0015, 5);
 
@@ -191,7 +191,7 @@ function reflection2(xint, yend, y){
 function luminous(){
   for(let i = height * 0.55 + 0.3; i < height; i += 0.1){
     let ratio = map(i, height * 0.55 + 0.5, height, 0, 1);
-    stroke(210, 60, 70, 12);
+    stroke(210, 60, 70, 11);
     line(width / 2 - (cos(PI * ratio * 1.5 + PI * 0.2) * 40 + noise(i * 0.1 + 10) * 100), i, width / 2 + cos(PI * ratio * 1.5 + PI * 0.2) * 40 + noise(i * 0.1) * 100, i);
   }
 }

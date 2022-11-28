@@ -1,21 +1,35 @@
-// ギリシャ国旗
+// ボスニアヘルツェゴビナ国旗
 function setup() {
-  const blue = color(0, 51, 160);
-  createCanvas(270, 180);
-  // noStroke();
-  background(255);
+  createCanvas(200, 100);
+}
 
-  let d = height / 9; // 縞1本の太さ
-
-  for(let i = 0; i < 9; i++){
-    // BLANK[1] (hint: 縞の色を交互に変えるには2で割った余りを使おう)
-    rect(0, i * d, width, (i + 1) * d);
-  }
-
-  fill(blue);
-  let size = d * 5;
-  rect(0, 0, size, size);
+function draw(){
+  noStroke();
+  background(0,1,155);
+  fill(250,200,0);
+  triangle(53,0,153,0,153,100)
 
   fill(255);
-  // BLANK[2] (hint: 白い十字を描くには rect を二つ描こう)
+  for(let c=0;c<120;c+=12.5){
+    push();
+    translate(c+34,c-1.3);
+    rotate(PI*3/10);
+    star(0,0,3.6,9.4,5);
+    pop();
+  }
 }
+
+function star(x,y,radius1,radius2,npoints){
+  let angle=TWO_PI/npoints;
+  let halfAngle=angle/2;
+  beginShape();
+  for(let a=0;a<TWO_PI;a+=angle){
+    let sx=x+cos(a)*radius2;
+    let sy=y+sin(a)*radius2;
+    vertex(sx,sy);
+    sx=x+cos(a+halfAngle)*radius1;
+    sy=y+sin(a+halfAngle)*radius1;
+    vertex(sx,sy);
+  }
+  endShape(CLOSE);
+}//starは，ヒム・カンパニー『２：形(Form)』https://himco.jp/2019/07/31/%ef%bc%92%ef%bc%9a%e5%bd%a2form/#%E6%98%9F%E5%BD%A2，を見ました．

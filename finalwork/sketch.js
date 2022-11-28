@@ -8,7 +8,7 @@ function setup(){
   createCanvas(400, 400);
   colorMode(HSL, 360, 100, 100, 100);
   colorVari1 = [250, 248, 246, 244, 242, 240, 238, 236, 234, 232, 230, 225, 220, 210, 200, 190, 180, 170, 50];
-  colorVari2 = [color(215, 65, 65, 100), color(215, 70, 53, 100), color(215, 90, 33, 100), color(215, 72, 43, 100)];
+  colorVari2 = [color(215, 65, 70, 100), color(215, 70, 55, 100), color(215, 90, 33, 100), color(215, 77, 43, 100)];
   for(let i = 0; i < 4; i++){
     let brightness = 30 - i * 5;
     colorVari3.push(color(215, 60, brightness, 100));
@@ -22,8 +22,12 @@ function draw(){
 
   background(0);
 
+
   if(state == 0){
-    sky(170, 260, 280, 300, 310, 325, 210, 190, 180, 70, 60, 40, 60, ex, a, b);
+    // sky(170, 260, 280, 300, 310, 325, 210, 190, 180, 70, 60, 40, 60, ex, a, b);
+    gradation2(170, 280, 210, 30, 60, 25, ex, a, b);
+    gradation(280, 300, 180, 110, 85, 6, 1, 1, ex, a, b);
+    gradation2(300, 330, 70, 30, 85, -15, ex, a, b);
 
     mountain(height * 0.25, 0.012, 1, 0, 10, colorVari2[0], 0);
     mountain(height * 0.3, 0.012, 1, 1, 20, colorVari2[1], 10);
@@ -103,13 +107,13 @@ function keyPressed(){
 
   if(key == "h"){
     if(state == 1){
-      stars.push({x: random(5, 390), y: random(5, 120), s: random(0.1, 1.7), c: random(30, 330)});
+      stars.push({x: random(3, 390), y: random(3, 160), s: random(0.1, 1.7), c: random(30, 330)});
     }
   }
 
   if(key == "n"){
     if(state == 1){
-      shootingStars.push({x: random(30, 350), y: random(- 10, 100), s: 1.7});
+      shootingStars.push({x: random(30, 350), y: random(- 10, 120), s: 1.7});
       sState = 1;
     }
   }
@@ -176,22 +180,22 @@ function flow(oceancolor, xbegin, xend, ybegin, yend, cntMax, scale, wave){
 
 function reflection(xint, yend, y){
   for(let i = 0; i < yend; i += 0.1){
-    stroke(215, 90, 30, 10);
+    stroke(215, 90, 30, 12);
     line(0, y + i, xint - i * 1.2 - noise(i * 0.08) * 80, y + i);
   }
 }
 
 function reflection2(xint, yend, y){
   for(let i = 0; i < yend; i += 0.1){
-    stroke(215, 90, 30, 10);
+    stroke(215, 90, 30, 12);
     line(xint + i + noise(i * 0.08) * 80, y + i, width, y + i);
   }
 }
 
 function luminous(){
   for(let i = height * 0.55 + 0.3; i < height; i += 0.1){
-    let ratio = map(i, height * 0.55 + 0.5, height, 0, 1);
-    stroke(210, 65, 72, 11);
+    let ratio = map(i, height * 0.55 + 0.3, height, 0, 1);
+    stroke(200 + ratio * 10, 57, 75 - ratio * 2, 11);
     line(width / 2 - (cos(PI * ratio * 1.5 + PI * 0.2) * 40 + noise(i * 0.1 + 10) * 100), i, width / 2 + cos(PI * ratio * 1.5 + PI * 0.2) * 40 + noise(i * 0.1) * 100, i);
   }
 }
@@ -201,6 +205,15 @@ function gradation(ybegin, yend, heuInt, heuChange, brightnessInt, amplitude, an
     let ratio = map(i, ybegin, yend, 0, 1);
     noStroke();
     fill(heuInt - ratio * heuChange, 80, brightnessInt + sin(PI * ratio * angleTimes) * amplitude * posiORnega, 100);
+    ellipse(ex, i, a * 2, b * 2);
+  }
+}
+
+function gradation2(ybegin, yend, heuInt, heuChange, brightnessInt, brightnessChange, ex, a, b){
+  for(let i = ybegin; i < yend; i++){
+    let ratio = map(i, ybegin, yend, 0, 1);
+    noStroke();
+    fill(heuInt - ratio * heuChange, 80, brightnessInt + ratio * brightnessChange, 100);
     ellipse(ex, i, a * 2, b * 2);
   }
 }
